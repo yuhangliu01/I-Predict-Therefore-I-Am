@@ -119,8 +119,8 @@ for seed in range(10):
         half = N // 2  # 
         
         diff_data = embedding[0].cpu().detach().numpy() - embedding[1].cpu().detach().numpy()
-        mean_diff_data = np.mean(diff_data, axis = 0, keepdims=True) #[:half+7]
-        #mean_diff_data = np.mean(diff_data[:half], axis = 0, keepdims=True) #[:half+7]
+        mean_diff_data = np.mean(diff_data, axis = 0, keepdims=True) #[:half]
+        #mean_diff_data = np.mean(diff_data[:half], axis = 0, keepdims=True) #[:half]
 
         mean_diff_data = mean_diff_data / np.linalg.norm(mean_diff_data)
         
