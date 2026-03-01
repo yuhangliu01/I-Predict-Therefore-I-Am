@@ -119,8 +119,8 @@ for seed in range(10):
         half = N // 2  # 
         
         diff_data = embedding[0].cpu().detach().numpy() - embedding[1].cpu().detach().numpy()
-        mean_diff_data = np.mean(diff_data, axis = 0, keepdims=True) #[:half+7]
-        #mean_diff_data = np.mean(diff_data[:half], axis = 0, keepdims=True) #[:half+7]
+        mean_diff_data = np.mean(diff_data, axis = 0, keepdims=True) # 
+        #mean_diff_data = np.mean(diff_data[:half], axis = 0, keepdims=True) # 
 
         mean_diff_data = mean_diff_data / np.linalg.norm(mean_diff_data)
         
@@ -133,8 +133,8 @@ for seed in range(10):
         
         #perm_label = np.random.permutation(label)   # null baseline
 
-        clf = LogisticRegression(max_iter=500,C=0.0001).fit(np_embedding, label) # for most case C=0.0001, C=0.01 for deepseek 7b 14b
-        #clf = LogisticRegression(max_iter=500,C=0.0001).fit(np_embedding[half:], label[half:]) # for most case C=0.0001, C=0.01 for deepseek 7b 14b
+        clf = LogisticRegression(max_iter=500,C=0.0001).fit(np_embedding, label) # try different values of C for different models, 
+        #clf = LogisticRegression(max_iter=500,C=0.0001).fit(np_embedding[half:], label[half:]) #try different values of C for different models, 
 
         perf = clf.score(np_embedding, label)
         print('Loss: {:.3f}'.format(perf))
